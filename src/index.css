@@ -1,13 +1,76 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+button:focus {
+  box-shadow: none !important;
+}
+
+.answered {
+  border-color: #17a2b8;
+  background-color: #17a2b833;
+}
+
+.answered h5 {
+  color: #17a2b8;
+}
+
+.custom-badge {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  font-size: 12px;
+  font-weight: 700;
+  z-index: 1000;
+  padding: 7px 11px;
+  right: 0;
+}
+
+.line {
+  height: 2px;
+  width: 45%;
+  margin: auto;
+  background: #dae0e5;
+}
+
+.or {
+  width: 10%;
+  text-align: center;
+  color: #6c757d;
+}
+
+.score-card {
+  width: min-content;
+}
+
+.score-card h5 {
+  border-radius: 50%;
+  background-color: #17a2b8;
+  width: 35px;
+  height: 35px;
+  padding: 4px 0;
+}
+
+.leader-board-cup {
+  z-index: 100;
+  background: white;
+  position: absolute;
+  width: 25px;
+  border-radius: 2rem;
+  height: 30px;
+}
+
+.leader-board-cup svg {
+  font-size: 20px;
+  margin: 2px;
 }
