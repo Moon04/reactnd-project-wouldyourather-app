@@ -1,6 +1,7 @@
 import { RECEIVE_QUESTIONS, ADD_QUESTION, ANSWER_QUESTION } from "./types";
 import { saveQuestionAnswer, saveQuestion } from "../utils/api";
 import { showLoading, hideLoading } from "react-redux-loading";
+import { handleGetUsers } from "./users";
 
 export function receiveQuestions(questions) {
   return {
@@ -21,7 +22,9 @@ function answerQuestion({ authedUser, questionId, answer }) {
 export function handleAnswerQuestion({ authedUser, questionId, answer }) {
   return (dispatch) => {
     dispatch(answerQuestion({ authedUser, questionId, answer }));
-    saveQuestionAnswer({ authedUser, questionId, answer }).catch((e) => {
+    saveQuestionAnswer({ authedUser, questionId, answer })
+    .then(() => dispatch(handleGetUsers()))
+    .catch((e) => {
       console.warn("Error in handleAnswerQuestion: ", e);
       dispatch(answerQuestion({ authedUser, questionId, answer }));
       alert("There was an error answering the question. Try again.");
@@ -47,6 +50,7 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
       author: authedUser,
     })
       .then((question) => dispatch(addQuestion(question)))
+      .then(() => dispatch(handleGetUsers()))
       .then(() => dispatch(hideLoading()));
   };
 }

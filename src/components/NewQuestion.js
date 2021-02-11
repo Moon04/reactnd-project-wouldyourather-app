@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import { Redirect } from 'react-router-dom'
 import { handleAddQuestion } from "../actions/questions";
 
 class NewQuestion extends Component {
   state = {
     optionOneText: "",
     optionTwoText: "",
+    toHome: false
   };
 
   handleSubmit = (e) => {
@@ -20,13 +21,19 @@ class NewQuestion extends Component {
     this.setState(() => ({
       optionOneText: "",
       optionTwoText: "",
+      toHome: true
     }));
 
     history.push("/");
   };
 
   render() {
-    const { optionOneText, optionTwoText } = this.state;
+    const { optionOneText, optionTwoText, toHome } = this.state;
+
+    if (toHome === true) {
+      return <Redirect to='/' />
+    }
+
     return (
       <div className="card w-50 mx-auto my-4">
         <h3 className="card-header text-center">Create New Question</h3>
@@ -83,4 +90,4 @@ class NewQuestion extends Component {
   }
 }
 
-export default withRouter(connect()(NewQuestion));
+export default connect()(NewQuestion);
