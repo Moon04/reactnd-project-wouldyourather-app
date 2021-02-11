@@ -10,7 +10,6 @@ const Home = ({
   const [questionsIdsList, setQuestionsIdsList] = useState([]);
 
   useEffect(() => {
-    console.log("blaaa");
     setQuestionsIdsList([...unAnsweredQuestionsIds]);
   }, [unAnsweredQuestionsIds]);
 
